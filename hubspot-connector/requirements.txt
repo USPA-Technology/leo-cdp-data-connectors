@@ -1,0 +1,6 @@
+pydantic
+python-dotenv
+hubspot-api-client
+
+pandas>=2.2.1
+tabulate
