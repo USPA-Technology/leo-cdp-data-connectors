@@ -1,8 +1,7 @@
 # Data Connnector between LEO CDP and Hubspot CRM
 
 - For HubSpot API document, please go to https://github.com/HubSpot/hubspot-api-python
-- Author: Trieu Nguyen at https://LEOCDP.com (my Github https://github.com/trieu)
-- Follow my YouTube channel for more knowledge: https://www.youtube.com/@trieu.leocdp
+- Need Hubspot Private App ACCESS_TOKEN: https://developers.hubspot.com/docs/api/private-apps
 
 ## In local Linux, follow these steps
 
