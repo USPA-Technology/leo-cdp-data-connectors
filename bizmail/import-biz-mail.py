@@ -26,8 +26,7 @@ class BizflyConfig:
                 f"bizfly_token={self.bizfly_token}, "
                 f"bizfly_project_token={self.bizfly_project_token})")
     
-def send_contact_to_bizfly():
-    
+def build_bizfly_payload(emails:str, name:str, address:str):
     config = BizflyConfig(source='redis', redis_port=6480)
     bizfly_app_key = config.bizfly_app_key
     bizfly_token = config.bizfly_token
@@ -37,19 +36,25 @@ def send_contact_to_bizfly():
     print(bizfly_token)
     print(bizfly_project_token)
     
-     # Set headers (optional, add if needed)
-    headers = {'Content-Type': 'application/json'}  
-    
     # Prepare the payload as a dictionary
     payload = {
         'app_key': bizfly_app_key,
         'token': bizfly_token,
         'project_token': bizfly_project_token,
         'list': '',
-        'emails': 'thomas1@example.com',
-        'name': 'Thomas Moore 1',
-        "address": "Vietnam"
+        'emails': emails,
+        'name': name,
+        "address": address
     }
+    return payload
+    
+def send_contact_to_bizfly(payload):
+    if payload is None:
+        print("Error: payload is None. Please call build_bizfly_payload to build valid payload")
+        return
+    
+    # Set headers (optional, add if needed)
+    headers = {'Content-Type': 'application/json'}  
 
     # Send the POST request with JSON payload
     response = requests.post(BIZFLY_BASE_URL_CONTACT, json=payload, headers=headers)
@@ -64,5 +69,5 @@ def send_contact_to_bizfly():
         print(f"Error: {response.status_code}")
         print(response.text)
 
-
-send_contact_to_bizfly()
+payload = build_bizfly_payload('trieu@leocdp.com',"Trieu","Ho Chi Minh City")
+send_contact_to_bizfly(payload)
