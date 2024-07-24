@@ -5,4 +5,5 @@ hubspot-api-client
 pandas>=2.2.1
 tabulate
 
+redis
 requests
