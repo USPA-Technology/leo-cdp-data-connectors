@@ -27,7 +27,8 @@ class BizflyConfig:
                 f"bizfly_project_token={self.bizfly_project_token})")
     
 def build_bizfly_payload(emails:str, name:str, address:str):
-    config = BizflyConfig(source='redis', redis_port=6480)
+    # config = BizflyConfig(source='redis', redis_port=6480)
+    config = BizflyConfig()
     bizfly_app_key = config.bizfly_app_key
     bizfly_token = config.bizfly_token
     bizfly_project_token = config.bizfly_project_token
@@ -41,10 +42,18 @@ def build_bizfly_payload(emails:str, name:str, address:str):
         'app_key': bizfly_app_key,
         'token': bizfly_token,
         'project_token': bizfly_project_token,
-        'list': '',
+        'list': 'b2b4f225-970f-41ea-bb46-6c5c3371ba60',
         'emails': emails,
+        'phones':'0903122290',
         'name': name,
-        "address": address
+        'gender': 'male',
+        "address": address,
+        "birthday":"16/08/1986",
+        "tongMuaHang":3000.11,
+        "cdp_dataLabels":"test, demo",
+        "dataLabels": ["demo","test"],
+        "segments": ["male","customer"],
+        "lastest_purchased_date":None,
     }
     return payload
     
